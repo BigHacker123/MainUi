@@ -3572,11 +3572,11 @@ function library:create_settings_tab(menu)
 	
     settings_main:separator({text = "Indicators",enabled=true})
 	
-    settings_main:toggle({text = 'keybinds', flag = 'keybind_indicator_enabled', callback = function(bool)
+    settings_main:toggle({text = 'keybinds', flag = 'keybind_indicator_enabled', default = false, callback = function(bool)
         library.keybind_indicator:set_enabled(bool)
     end})
 	
-    settings_main:toggle({text = 'Watermark', flag = '', callback = function()
+    settings_main:toggle({text = 'Watermark', flag = '', default = false, callback = function()
     end})
 
     settings_config:dropdown({text = 'config', flag = 'configs_selected'})
