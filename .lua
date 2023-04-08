@@ -3530,10 +3530,6 @@ function library:create_settings_tab(menu)
         menu:set_open(bool, 0.1)
     end})
 
-    settings_main:toggle({text = 'keybind indicator', flag = 'keybind_indicator_enabled', callback = function(bool)
-        library.keybind_indicator:set_enabled(bool)
-    end})
-
     settings_main:button({text = 'join discord', confirm = true, callback = function()
         local res = syn.request({
             Url = 'http://127.0.0.1:6463/rpc?v=1',
@@ -3564,6 +3560,19 @@ function library:create_settings_tab(menu)
 
     settings_main:button({text = 'close roblox', confirm = true, callback = function()
         game:shutdown()
+    end})
+	
+    settings_main:button({text = 'unload', confirm = true, callback = function()
+        library:unload()
+    end})
+	
+    settings_main:separator({text = "Indicators",enabled=true})
+	
+    settings_main:toggle({text = 'keybinds', flag = 'keybind_indicator_enabled', callback = function(bool)
+        library.keybind_indicator:set_enabled(bool)
+    end})
+	
+    settings_main:toggle({text = 'Watermark', flag = '', callback = function()
     end})
 
     settings_config:dropdown({text = 'config', flag = 'configs_selected'})
