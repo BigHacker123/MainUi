@@ -3416,20 +3416,11 @@ library.dropdown.objects.border_outer = library:create('outline', library.dropdo
 function library:create_settings_tab(menu)
     local tab = menu:tab({text = 'settings', order = 999})
 
-    local settings_config = tab:section({text = 'config', side = 2})
+    local settings_config = tab:section({text = 'config', side = 1})
     local settings_colors = tab:section({text = 'themes', side = 2})	
     local settings_main = tab:section({text = 'main', side = 1})
-    local settings_misc = tab:section({text = 'misc', side = 2})
-
-    settings_main:keybind({text = 'open / close', flag = 'menubind', default = Enum.KeyCode.RightShift, callback = function(bool)
-        menu:set_open(bool, 0.1)
-    end})
-
-    settings_main:toggle({text = 'keybind indicator', flag = 'keybind_indicator_enabled', callback = function(bool)
-        library.keybind_indicator:set_enabled(bool)
-    end})
-
-
+    local settings_credits = tab:section({text = 'credits', side = 2})
+	
     settings_colors:colorpicker({text = 'accent', flag = 'theme_accent', default = library.themes.default.Accent, callback = function(color)
         library.theme.Accent = color
         library:update_theme()
@@ -3535,7 +3526,15 @@ function library:create_settings_tab(menu)
         library:update_theme()
     end})
 
-        settings_misc:button({text = 'join discord', confirm = true, callback = function()
+    settings_main:keybind({text = 'open / close', flag = 'menubind', default = Enum.KeyCode.RightShift, callback = function(bool)
+        menu:set_open(bool, 0.1)
+    end})
+
+    settings_main:toggle({text = 'keybind indicator', flag = 'keybind_indicator_enabled', callback = function(bool)
+        library.keybind_indicator:set_enabled(bool)
+    end})
+
+    settings_main:button({text = 'join discord', confirm = true, callback = function()
         local res = syn.request({
             Url = 'http://127.0.0.1:6463/rpc?v=1',
             Method = 'POST',
@@ -3554,16 +3553,16 @@ function library:create_settings_tab(menu)
         end
     end})
 
-    settings_misc:button({text = 'rejoin server', confirm = true, callback = function()
+    settings_main:button({text = 'rejoin server', confirm = true, callback = function()
         game:GetService('TeleportService'):Teleport(game.PlaceId, game.Players.LocalPlayer)
     end})
 
-    settings_misc:button({text = 'server hop', confirm = true, callback = function()
+    settings_main:button({text = 'server hop', confirm = true, callback = function()
         local module = serverhop()
         module:Teleport(game.PlaceId)
     end})
 
-    settings_misc:button({text = 'close roblox', confirm = true, callback = function()
+    settings_main:button({text = 'close roblox', confirm = true, callback = function()
         game:shutdown()
     end})
 
