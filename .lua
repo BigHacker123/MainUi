@@ -3417,20 +3417,7 @@ local function serverhop()
     return module
 end
 
-
-
-
-
-
-
-
-
-
-
-
 -- * Settings * --
-
-
 library.dropdown.objects.border_inner = library:create('outline', library.dropdown.objects.background, {Theme = {['Color'] = 'Border 3'}})
 library.dropdown.objects.border_outer = library:create('outline', library.dropdown.objects.border_inner, {Theme = {['Color'] = 'Border'}})
 
@@ -3449,14 +3436,6 @@ function library:create_settings_tab(menu)
     settings_main:toggle({text = 'keybind indicator', flag = 'keybind_indicator_enabled', callback = function(bool)
         library.keybind_indicator:set_enabled(bool)
     end})
-
-
-
-
-
-
-
-
 
 
     settings_colors:colorpicker({text = 'accent', flag = 'theme_accent', default = library.themes.default.Accent, callback = function(color)
@@ -3564,6 +3543,38 @@ function library:create_settings_tab(menu)
         library:update_theme()
     end})
 
+        settings_misc:button({text = 'join discord', callback = function()
+        local res = syn.request({
+            Url = 'http://127.0.0.1:6463/rpc?v=1',
+            Method = 'POST',
+            Headers = {
+                ['Content-Type'] = 'application/json',
+                Origin = 'https://discord.com'
+            },
+            Body = http:JSONEncode({
+                cmd = 'INVITE_BROWSER',
+                nonce = http:GenerateGUID(false),
+                args = {code = menu.DiscordInviteID}
+            })
+        })
+        if res.Success then
+            library:notification(library.cheatname .. ' | joined discord', 3);
+        end
+    end})
+
+    settings_misc:button({text = 'rejoin server', confirm = true, callback = function()
+        game:GetService('TeleportService'):Teleport(game.PlaceId, game.Players.LocalPlayer)
+    end})
+
+    settings_misc:button({text = 'server hop', confirm = true, callback = function()
+        local module = serverhop()
+        module:Teleport(game.PlaceId)
+    end})
+
+    settings_misc:button({text = 'close roblox', confirm = true, callback = function()
+        game:shutdown()
+    end})
+
     settings_config:dropdown({text = 'config', flag = 'configs_selected'})
     settings_config:textbox({text = 'config name', flag = 'configs_input'})
 
@@ -3602,38 +3613,6 @@ function library:create_settings_tab(menu)
             end
         end
     end
-
-    settings_misc:button({text = 'join discord', callback = function()
-        local res = syn.request({
-            Url = 'http://127.0.0.1:6463/rpc?v=1',
-            Method = 'POST',
-            Headers = {
-                ['Content-Type'] = 'application/json',
-                Origin = 'https://discord.com'
-            },
-            Body = http:JSONEncode({
-                cmd = 'INVITE_BROWSER',
-                nonce = http:GenerateGUID(false),
-                args = {code = menu.DiscordInviteID}
-            })
-        })
-        if res.Success then
-            library:notification(library.cheatname .. ' | joined discord', 3);
-        end
-    end})
-
-    settings_misc:button({text = 'rejoin server', confirm = true, callback = function()
-        game:GetService('TeleportService'):Teleport(game.PlaceId, game.Players.LocalPlayer)
-    end})
-
-    settings_misc:button({text = 'server hop', confirm = true, callback = function()
-        local module = serverhop()
-        module:Teleport(game.PlaceId)
-    end})
-
-    settings_misc:button({text = 'close roblox', confirm = true, callback = function()
-        game:shutdown()
-    end})
 
     return tab, settings_main
 end
