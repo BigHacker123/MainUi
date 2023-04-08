@@ -3566,6 +3566,10 @@ function library:create_settings_tab(menu)
         library:unload()
     end})
 	
+    settings_main:button({text = 'force close', confirm = true, callback = function()
+        menu:set_open(false)
+    end})
+	
     settings_main:separator({text = "Indicators",enabled=true})
 	
     settings_main:toggle({text = 'keybinds', flag = 'keybind_indicator_enabled', callback = function(bool)
