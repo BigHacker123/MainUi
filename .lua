@@ -2929,7 +2929,7 @@ do
         watermark.objects.background = library:create('rect', {
             Position = udim2_new(0,10,0,10),
             Theme = {['Color'] = 'Background'},
-            Visible = true
+            Visible = false
         })
 
         watermark.objects.label = library:create('text', {
