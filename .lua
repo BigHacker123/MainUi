@@ -3622,7 +3622,7 @@ function library:create_settings_tab(menu)
         end
     end})
 
-    settings_misc:button({text = 'rejoin', confirm = true, callback = function()
+    settings_misc:button({text = 'rejoin server', confirm = true, callback = function()
         game:GetService('TeleportService'):Teleport(game.PlaceId, game.Players.LocalPlayer)
     end})
 
