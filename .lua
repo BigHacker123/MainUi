@@ -3416,9 +3416,9 @@ library.dropdown.objects.border_outer = library:create('outline', library.dropdo
 function library:create_settings_tab(menu)
     local tab = menu:tab({text = 'settings', order = 999})
 
-    local settings_main = tab:section({text = 'main', side = 1})
-    local settings_colors = tab:section({text = 'colors', side = 1})
     local settings_config = tab:section({text = 'config', side = 2})
+    local settings_colors = tab:section({text = 'themes', side = 2})	
+    local settings_main = tab:section({text = 'main', side = 1})
     local settings_misc = tab:section({text = 'misc', side = 2})
 
     settings_main:keybind({text = 'open / close', flag = 'menubind', default = Enum.KeyCode.RightShift, callback = function(bool)
