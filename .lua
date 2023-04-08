@@ -3535,7 +3535,7 @@ function library:create_settings_tab(menu)
         library:update_theme()
     end})
 
-        settings_misc:button({text = 'join discord', callback = function()
+        settings_misc:button({text = 'join discord', confirm = true, callback = function()
         local res = syn.request({
             Url = 'http://127.0.0.1:6463/rpc?v=1',
             Method = 'POST',
