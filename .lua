@@ -2916,7 +2916,7 @@ do
     library:define('watermark', function(properties)
         local watermark = {}
         watermark.lastupdate = 0
-        watermark.enabled = false
+        watermark.enabled = true
         watermark.objects = {}
         watermark.text = properties.text or {
             'hyphon.cc',
@@ -2944,7 +2944,6 @@ do
             Size = udim2_new(1,0,0,1),
             Parent = watermark.objects.background
         })
-
         
         watermark.objects.outline = library:create('outline', watermark.objects.background, {Theme = {['Color'] = 'Border 1'}})
         watermark.objects.outline2 = library:create('outline', watermark.objects.outline, {Theme = {['Color'] = 'Border 2'}})
@@ -3332,13 +3331,6 @@ library.dropdown.objects.background = library:create('rect', {
 --     ZIndex = 42,
 --     Parent = library.dropdown.objects.background 
 -- })
-
-
-
-
-
-
-
 
 local function serverhop()
     local AllIDs = {}
