@@ -2952,7 +2952,7 @@ do
             library.stat.fps = 1 / delta
             library.stat.ping = stats.Network.ServerStatsItem["Data Ping"]:GetValue()
 
-            watermark.objects.background.Visible = watermark.enabled
+            watermark.objects.background.Visible = true
 
             if tick() - watermark.lastupdate > 0.1 and watermark.enabled then
                 watermark.lastupdate = tick()
