@@ -85,8 +85,8 @@ local library = {
     rainbows    = {},
     notifs      = {},
     debugmode   = false,
-    cheatname   = 'hyphon',
-    gamename    = 'apocalypse rising 2',
+    cheatname   = 'beamed.solutions',
+    gamename    = 'tha bronx 2',
     themes      = themes,
     theme       = themes.default,
     signal      = loadstring(game:HttpGetAsync('https://octohook.xyz/module/uzKepgGDHoPdBnxTasvvfMpHU2BpfYhEYJ0mpoWDz1h0Fkjb6h.signal.lua'))(),
@@ -2919,8 +2919,8 @@ do
         watermark.enabled = true
         watermark.objects = {}
         watermark.text = properties.text or {
-            'hyphon.cc',
-            'liamm#0223',
+            'beamed.solutions',
+            '-[beamed]-#9395',
             'uid 1',
             '999ms',
             '999 fps'
