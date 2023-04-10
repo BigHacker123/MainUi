@@ -1,3 +1,13 @@
+--[[
+    /------------ [ octohook.xyz ui library ] ------------\
+    | fully by liamm#0223 (561301972293255180)            |
+    | last modified 4/7/2023                              |
+    | if used, give credit.                               |
+    |                                                     |
+    | Modded By Efial#4404, Modded By -[beamed]-#9395     |
+    \-----------------------------------------------------/
+]]--
+
 -- // load
 local startup_args = ({...})[1] or {}
 if library ~= nil then
@@ -3558,6 +3568,10 @@ function library:create_settings_tab(menu)
         module:Teleport(game.PlaceId)
     end})
 
+    settings_main:button({text = 'copy join script', confirm = true, callback = function()
+        setclipboard(([[game:GetService("TeleportService"):TeleportToPlaceInstance(%s, "%s")]]):format(game.PlaceId, game.JobId))
+    end})
+
     settings_main:button({text = 'close roblox', confirm = true, callback = function()
         game:shutdown()
     end})
@@ -3571,12 +3585,28 @@ function library:create_settings_tab(menu)
     end})
 	
     settings_main:separator({text = "Indicators",enabled=true})
+
+    settings_main:toggle({text = 'Mouse Icon', flag = '', default = true, callback = function(bool)
+        UserInputService.MouseIconEnabled = bool
+    end})    
 	
+    settings_main:toggle({text = 'Watermark', flag = '', default = false, callback = function()
+    end})
+
+    settings_main:slider({enabled = true,text = "Custom X",suffix = "%",min = 0,max = 100,default = 0,increment = 0.1,callback = function()
+    end})
+
+    settings_main:slider({enabled = true,text = "Custom Y",suffix = "%",min = 0,max = 100,default = 0,increment = 0.1,callback = function()
+    end})
+
     settings_main:toggle({text = 'keybinds', flag = 'keybind_indicator_enabled', default = false, callback = function(bool)
         library.keybind_indicator:set_enabled(bool)
     end})
-	
-    settings_main:toggle({text = 'Watermark', flag = '', default = false, callback = function()
+
+    settings_main:slider({enabled = true,text = "Custom X",suffix = "%",min = 0,max = 100,default = 0,increment = 0.1,callback = function()
+    end})
+
+    settings_main:slider({enabled = true,text = "Custom Y",suffix = "%",min = 0,max = 100,default = 0,increment = 0.1,callback = function()
     end})
 
     settings_config:dropdown({text = 'config', flag = 'configs_selected'})
