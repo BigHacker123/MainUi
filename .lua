@@ -3586,6 +3586,8 @@ function library:create_settings_tab(menu)
 	
     settings_main:separator({text = "Indicators",enabled=true})
 
+    local UserInputService = game:GetService("UserInputService")
+
     settings_main:toggle({text = 'Mouse Icon', flag = '', default = true, callback = function(bool)
         UserInputService.MouseIconEnabled = bool
     end})    
