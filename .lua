@@ -2923,6 +2923,7 @@ do
     end)
 
     -- watermark
+    library:create('watermark', {})
     library:define('watermark', function(properties)
         local watermark = {}
         watermark.lastupdate = 0.1
