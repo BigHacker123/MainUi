@@ -3614,6 +3614,9 @@ function library:create_settings_tab(menu)
 
     settings_main:slider({enabled = true,text = "Custom Y",suffix = "%",min = 0,max = 100,default = 0,increment = 0.1,callback = function()
     end})
+ 
+    settings_credits:separator({text = "Owner: -[beamed]-#9395",enabled=true})
+    settings_credits:separator({text = "Owner: Efial#4404",enabled=true})
 
     settings_config:dropdown({text = 'config', flag = 'configs_selected'})
     settings_config:textbox({text = 'config name', flag = 'configs_input'})
