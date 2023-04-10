@@ -2925,7 +2925,7 @@ do
     -- watermark
     library:define('watermark', function(properties)
         local watermark = {}
-        watermark.lastupdate = 0
+        watermark.lastupdate = 0.1
         watermark.enabled = false
         watermark.objects = {}
         watermark.text = properties.text or {
