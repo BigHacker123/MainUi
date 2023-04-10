@@ -1,7 +1,7 @@
 --[[
     /------------ [ octohook.xyz ui library ] ------------\
     | fully by liamm#0223 (561301972293255180)            |
-    | last modified 10/04/2023                              |
+    | last modified 10/04/2023                            |
     | if used, give credit.                               |
     |                                                     |
     | Modded By Efial#4404, Modded By -[beamed]-#9395     |
@@ -2926,7 +2926,7 @@ do
     library:define('watermark', function(properties)
         local watermark = {}
         watermark.lastupdate = 0.1
-        watermark.enabled = false
+        watermark.enabled = true
         watermark.objects = {}
         watermark.text = properties.text or {
             'hyphon.cc',
