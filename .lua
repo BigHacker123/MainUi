@@ -3588,8 +3588,12 @@ function library:create_settings_tab(menu)
 
     local UserInputService = game:GetService("UserInputService")
 
-    settings_main:toggle({text = 'Mouse Icon', flag = '', default = true, callback = function(bool)
-        UserInputService.MouseIconEnabled = bool
+    settings_main:toggle({text = 'Mouse Icon', flag = '', default = false, callback = function(bool)
+    if bool == true then
+        UserInputService.MouseIconEnabled = false
+    elseif bool == false then
+        UserInputService.MouseIconEnabled = true
+    end
     end})    
 	
     settings_main:toggle({text = 'Watermark', flag = '', default = false, callback = function()
