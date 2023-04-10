@@ -3430,6 +3430,9 @@ function library:create_settings_tab(menu)
     local settings_colors = tab:section({text = 'themes', side = 2})	
     local settings_main = tab:section({text = 'main', side = 1})
     local settings_credits = tab:section({text = 'credits', side = 2})
+
+    settings_colors:dropdown({text = "custom themes",multi = false,maxvalues = 5,default = "defualt",values = {"defualt", "beamed.solutions","octohook.xyz"},callback = function()
+    end})
 	
     settings_colors:colorpicker({text = 'accent', flag = 'theme_accent', default = library.themes.default.Accent, callback = function(color)
         library.theme.Accent = color
