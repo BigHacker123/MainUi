@@ -2925,7 +2925,7 @@ do
     -- watermark
     library:define('watermark', function(properties)
         local watermark = {}
-        watermark.lastupdate = 0
+        watermark.lastupdate = 0.1
         watermark.enabled = true
         watermark.objects = {}
         watermark.text = properties.text or {
@@ -3622,7 +3622,7 @@ function library:create_settings_tab(menu)
     settings_config:textbox({text = 'config name', flag = 'configs_input'})
 
     settings_config:button({text = 'create', confirm = true, callback = function()
-        xpcall(function()
+        xpcall(function() 
             library:save_config(flags.configs_input, true)
             library:notification(("successfully created config '%s'"):format(flags.configs_input), 5, color3_new(0.35, 1, 0.35))
         end, function()
