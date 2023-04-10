@@ -2924,14 +2924,13 @@ do
 
     -- watermark
     library:define('watermark', function(properties)
-    library:create('watermark', {})
         local watermark = {}
-        watermark.lastupdate = 0.1
-        watermark.enabled = true
+        watermark.lastupdate = 0
+        watermark.enabled = false
         watermark.objects = {}
         watermark.text = properties.text or {
-            'beamed.solutions',
-            '-[beamed]-#9395',
+            'hyphon.cc',
+            'liamm#0223',
             'uid 1',
             '999ms',
             '999 fps'
@@ -2940,7 +2939,7 @@ do
         watermark.objects.background = library:create('rect', {
             Position = udim2_new(0,10,0,10),
             Theme = {['Color'] = 'Background'},
-            Visible = true
+            Visible = false
         })
 
         watermark.objects.label = library:create('text', {
@@ -2963,7 +2962,7 @@ do
             library.stat.fps = 1 / delta
             library.stat.ping = stats.Network.ServerStatsItem["Data Ping"]:GetValue()
 
-            watermark.objects.background.Visible = true
+            watermark.objects.background.Visible = watermark.enabled
 
             if tick() - watermark.lastupdate > 0.1 and watermark.enabled then
                 watermark.lastupdate = tick()
@@ -2975,7 +2974,6 @@ do
                 watermark.objects.background.Size = udim2_new(0, watermark.objects.label.TextBounds.X + 10, 0, 18) 
             end
         end)
-
 
         return watermark
     end)
