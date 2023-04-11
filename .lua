@@ -35,8 +35,6 @@ local themes = {
         ['Option Border 1']     = Color3.fromRGB(45,45,50),
         ['Option Border 2']     = Color3.fromRGB(0,0,0),
         ['Option Background']   = Color3.fromRGB(31,31,34),
-        ["Risky Text"]          = Color3.fromRGB(175, 21, 21),
-        ["Risky Text Enabled"]  = Color3.fromRGB(255, 41, 41),
     }
 }
 
@@ -3528,16 +3526,6 @@ function library:create_settings_tab(menu)
         library:update_theme()
     end})
 
-    settings_colors:colorpicker({text = 'Risky Text', flag = 'theme_RiskyText', default = library.themes.default["Risky Text"], callback = function(color)
-        library.theme["Risky Text"] = color
-        library:update_theme()
-    end})
-
-    settings_colors:colorpicker({text = 'Risky Text Enabled', flag = 'theme_RiskyTextEnabled', default = library.themes.default["Risky Text Enabled"], callback = function(color)
-        library.theme["Risky Text Enabled"] = color
-        library:update_theme()
-    end})
-
     settings_main:keybind({text = 'open / close', flag = 'menubind', default = Enum.KeyCode.RightShift, callback = function(bool)
         menu:set_open(bool, 0.1)
     end})
@@ -3586,19 +3574,9 @@ function library:create_settings_tab(menu)
         menu:set_open(false)
     end})
 	
-    settings_main:separator({text = "Indicators",enabled=true})
-
-    local UserInputService = game:GetService("UserInputService")
-
-    settings_main:toggle({text = 'Mouse Icon', flag = '', default = false, callback = function(bool)
-    if bool == true then
-        UserInputService.MouseIconEnabled = false
-    elseif bool == false then
-        UserInputService.MouseIconEnabled = true
-    end
-    end})    
+    settings_main:separator({text = "indicators",enabled=true}) 
 	
-    settings_main:toggle({text = 'Watermark', flag = '', default = false, callback = function()
+    settings_main:toggle({text = 'watermark', flag = '', default = false, callback = function()
     end})
 
     settings_main:slider({enabled = true,text = "Custom X",suffix = "%",min = 0,max = 100,default = 0,increment = 0.1,callback = function()
@@ -3616,9 +3594,6 @@ function library:create_settings_tab(menu)
 
     settings_main:slider({enabled = true,text = "Custom Y",suffix = "%",min = 0,max = 100,default = 0,increment = 0.1,callback = function()
     end})
- 
-    settings_credits:separator({text = "Owner: -[beamed]-#9395",enabled=true})
-    settings_credits:separator({text = "Owner: Efial#4404",enabled=true})
 
     settings_config:dropdown({text = 'config', flag = 'configs_selected'})
     settings_config:textbox({text = 'config name', flag = 'configs_input'})
