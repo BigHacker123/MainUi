@@ -2577,6 +2577,7 @@ do
 
     -- option
     library:define('option', function(default_properties, properties, parent, id)
+        print(id, properties.flag)
 
         local option = {}
         option._type    = 'option'
